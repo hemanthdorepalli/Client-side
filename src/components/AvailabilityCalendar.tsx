@@ -33,7 +33,7 @@ const AvailabilityCalendar: React.FC<AvailabilityCalendarProps> = ({ user }) => 
   useEffect(() => {
     const fetchAvailability = async () => {
       try {
-        const response = await axios.get('https://backend-nodejs-zxvj.onrender.com/api/availability/slots', {
+        const response = await axios.get('https://backend-nodejs-1-i9zy.onrender.com/api/availability/slots', {
           params: { user: user.email }
         });
         setAvailability(response.data);
@@ -83,11 +83,11 @@ const AvailabilityCalendar: React.FC<AvailabilityCalendarProps> = ({ user }) => 
     }
 
     try {
-      await axios.post('https://backend-nodejs-zxvj.onrender.com/api/availability/slots', { ...newSlot, user: user.email });
+      await axios.post('https://backend-nodejs-1-i9zy.onrender.com/api/availability/slots', { ...newSlot, user: user.email });
       setSnackbarMessage('Slot added successfully');
       setSnackbarSeverity('success');
       setSnackbarOpen(true);
-      const response = await axios.get('https://backend-nodejs-zxvj.onrender.com/api/availability/slots', {
+      const response = await axios.get('https://backend-nodejs-1-i9zy.onrender.com/api/availability/slots', {
         params: { user: user.email }
       });
       setAvailability(response.data);

@@ -30,7 +30,7 @@ const MySession: React.FC<MySessionProps> = ({ user }) => {
   useEffect(() => {
     const fetchSlots = async () => {
       try {
-        const response = await axios.get('https://backend-nodejs-zxvj.onrender.com/api/availability/slots', {
+        const response = await axios.get('https://backend-nodejs-1-i9zy.onrender.com/api/availability/slots', {
           params: { user: user.email },
         });
         // Ensure dates are converted to moment objects
@@ -53,7 +53,7 @@ const MySession: React.FC<MySessionProps> = ({ user }) => {
 
   const handleDelete = async (_id: string) => {
     try {
-      await axios.delete(`https://backend-nodejs-zxvj.onrender.com/api/availability/slots/${_id}`);
+      await axios.delete(`https://backend-nodejs-1-i9zy.onrender.com/api/availability/slots/${_id}`);
       setSlots(slots.filter((slot) => slot._id !== (_id)));
       setSnackbarMessage('Slot deleted successfully');
       setSnackbarSeverity('success');
@@ -69,7 +69,7 @@ const MySession: React.FC<MySessionProps> = ({ user }) => {
   const handleEditSave = async () => {
     if (editSlot) {
       try {
-        await axios.put(`https://backend-nodejs-zxvj.onrender.com/api/availability/slots/${editSlot._id}`, {
+        await axios.put(`https://backend-nodejs-1-i9zy.onrender.com/api/availability/slots/${editSlot._id}`, {
           start: editSlot.start.toISOString(),
           end: editSlot.end.toISOString(),
           duration: editSlot.duration,
