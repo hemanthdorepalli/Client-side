@@ -18,7 +18,7 @@ const LoginPage: React.FC<{ setUser: (user: any) => void }> = ({ setUser }) => {
     setLoading(true);
 
     try {
-      const response = await axios.post('https://nodejs-backend-g2il.onrender.com/api/auth/login', { email, password });
+      const response = await axios.post('https://backend-nodejs-zxvj.onrender.com/api/auth/login', { email, password });
       setUser(response.data.user);
       localStorage.setItem('user', JSON.stringify(response.data.user));
       setSnackbarMessage('Login successful');
