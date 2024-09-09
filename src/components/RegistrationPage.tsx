@@ -41,7 +41,7 @@ const RegistrationPage: React.FC = () => {
     }
 
     try {
-      await axios.post('http://localhost:5021/api/auth/register', { name, email, password });
+      await axios.post('https://nodejs-backend-g2il.onrender.com/api/auth/register', { name, email, password });
       setSnackbarMessage('User registered successfully');
       setSnackbarSeverity('success');
       setSnackbarOpen(true);

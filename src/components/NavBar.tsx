@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './NavBar.css'; // Ensure the path is correct
+import './NavBar.css'; 
 
 const NavBar: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

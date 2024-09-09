@@ -54,7 +54,7 @@ const AdminDashboard: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:5021/api/admin/users');
+        const response = await axios.get('https://nodejs-backend-g2il.onrender.com/api/admin/users');
         setUsers(response.data);
       } catch (error) {
         console.error('Error fetching users:', error);
@@ -70,7 +70,7 @@ const AdminDashboard: React.FC = () => {
     if (selectedUserEmail) {
       const fetchAvailability = async () => {
         try {
-          const response = await axios.get(`http://localhost:5021/api/admin/availability/${selectedUserEmail}`);
+          const response = await axios.get(`https://nodejs-backend-g2il.onrender.com/api/admin/availability/${selectedUserEmail}`);
           setAvailability(response.data);
         } catch (error) {
           console.error('Error fetching availability:', error);
@@ -90,7 +90,7 @@ const AdminDashboard: React.FC = () => {
   const handleUpdateSlot = async () => {
     if (editedSlot) {
       try {
-        await axios.put(`http://localhost:5021/api/admin/availability/${editedSlot._id}`, {
+        await axios.put(`https://nodejs-backend-g2il.onrender.com/api/admin/availability/${editedSlot._id}`, {
           start: editedSlot.start,
           end: editedSlot.end,
           duration: editedSlot.duration,
@@ -101,7 +101,7 @@ const AdminDashboard: React.FC = () => {
         setSnackbarOpen(true);
 
         if (selectedUserEmail) {
-          const response = await axios.get(`http://localhost:5021/api/admin/availability/${selectedUserEmail}`);
+          const response = await axios.get(`https://nodejs-backend-g2il.onrender.com/api/admin/availability/${selectedUserEmail}`);
           setAvailability(response.data);
         }
         setEditedSlot(null);
@@ -116,14 +116,14 @@ const AdminDashboard: React.FC = () => {
 
   const handleDeleteSlot = async (slotId: string) => {
     try {
-      await axios.delete(`http://localhost:5021/api/admin/availability/${slotId}`);
+      await axios.delete(`https://nodejs-backend-g2il.onrender.com/api/admin/availability/${slotId}`);
 
       setSnackbarMessage('Slot deleted successfully');
       setSnackbarSeverity('success');
       setSnackbarOpen(true);
 
       if (selectedUserEmail) {
-        const response = await axios.get(`http://localhost:5021/api/admin/availability/${selectedUserEmail}`);
+        const response = await axios.get(`https://nodejs-backend-g2il.onrender.com/api/admin/availability/${selectedUserEmail}`);
         setAvailability(response.data);
       }
     } catch (error) {
@@ -144,7 +144,7 @@ const AdminDashboard: React.FC = () => {
   const handleScheduleSession = async () => {
     const duration = calculateDuration(sessionDetails.start, sessionDetails.end);
     try {
-      const response = await axios.post('http://localhost:5021/api/slots', { 
+      const response = await axios.post('https://nodejs-backend-g2il.onrender.com/api/slots', { 
         start: sessionDetails.start, 
         end: sessionDetails.end, 
         duration,
@@ -164,7 +164,7 @@ const AdminDashboard: React.FC = () => {
       });
 
       // Refresh availability list
-      const availabilityResponse = await axios.get(`http://localhost:5021/api/admin/availability/${selectedUserEmail}`);
+      const availabilityResponse = await axios.get(`https://nodejs-backend-g2il.onrender.com/api/admin/availability/${selectedUserEmail}`);
       setAvailability(availabilityResponse.data);
     } catch (error) {
       console.error('Error scheduling session:', error);
